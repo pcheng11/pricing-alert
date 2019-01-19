@@ -1,4 +1,4 @@
-__author__ = 'victor cheng'
+__author__ = 'Victor Cheng'
 
 DEBUG = True
 ADMINS = frozenset(['pcheng11@illinois.edu'])
