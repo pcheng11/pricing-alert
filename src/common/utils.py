@@ -1,0 +1,21 @@
+from passlib.hash import pbkdf2_sha512
+import re
+class Utils():
+
+    @staticmethod
+    def hash_password(password):
+        return pbkdf2_sha512.encrypt(password)
+
+    @staticmethod
+    def check_hashed_password(password, hashed_password):
+        """
+        checks passwords match
+        :param password: sha512-hashed pw
+        :param hashed_password: pbkdf2_sha512 encrypted pw (db)
+        """
+        return pbkdf2_sha512.verify(password, hashed_password)
+
+    @staticmethod
+    def email_is_valid(email):
+        email_address_matcher = re.compile('^[\w-]+@([\w-]+\.)+[\w]+$')
+        return True if email_address_matcher.match(email) else False
