@@ -6,9 +6,8 @@ __author__ = 'victor cheng'
 from flask import Flask, render_template
 
 app = Flask(__name__)
-# import config from config.py
-app.config.from_object('config')
-app.secret_key='123'
+app.config.from_object('src.config')
+app.secret_key ='123'
 
 @app.before_first_request
 def init_db():
