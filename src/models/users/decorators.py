@@ -1,6 +1,6 @@
 from functools import wraps
-
-from flask import session, url_for, redirect, request, app
+from src.app import app
+from flask import session, url_for, redirect, request
 
 
 def requires_login(func):
@@ -10,6 +10,7 @@ def requires_login(func):
             # after user login they will go back to original website
             return redirect(url_for('users.login_user', next=request.path))
         return func(*args, **kwargs)
+
     return decorated_function
 
 
@@ -22,4 +23,5 @@ def requires_admin_permission(func):
         if session['email'] not in app.config['ADMINS']:
             return redirect(url_for('users.login_user'))
         return func(*args, **kwargs)
+
     return decorated_function
