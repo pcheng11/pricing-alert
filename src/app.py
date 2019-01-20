@@ -1,6 +1,5 @@
 from src.common.database import Database
 
-
 __author__ = 'victor cheng'
 
 from flask import Flask, render_template
