@@ -25,5 +25,5 @@ app.register_blueprint(user_blueprint, url_prefix='/users')
 app.register_blueprint(alert_blueprint, url_prefix='/alerts')
 app.register_blueprint(store_blueprint, url_prefix='/stores')
 
-
-app.run(debug=app.config, port=5005)
+if __name__ == '__main__':
+    app.run(debug=app.config, port=5005)
