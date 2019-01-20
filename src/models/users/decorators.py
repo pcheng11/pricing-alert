@@ -20,6 +20,7 @@ def requires_admin_permission(func):
         if 'email' not in session.keys() or session['email'] is None:
             # after user login they will go back to original website
             return redirect(url_for('users.login_user', next=request.path))
+        print(src.config['ADMINS'])
         if session['email'] not in src.config['ADMINS']:
             return redirect(url_for('users.login_user'))
         return func(*args, **kwargs)
