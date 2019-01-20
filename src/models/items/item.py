@@ -23,7 +23,7 @@ class Item():
         request = requests.get(self.url)
         content = request.content
         soup = BeautifulSoup(content, "html.parser")
-        element = soup.find(self.tag_name, self.query)
+        element = soup.find(self.tag_name, self.query)['data-test']
         string_price = element.text.strip()
 
         pattern = re.compile("(\d+.\d+)")
