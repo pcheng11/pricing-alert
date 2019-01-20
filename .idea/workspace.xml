@@ -64,8 +64,8 @@
       <file leaf-file-name="item.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/items/item.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="54" lean-forward="true" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+            <state relative-caret-position="408">
+              <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -490,8 +490,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/items/item.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="54" lean-forward="true" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
+        <state relative-caret-position="408">
+          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
