@@ -8,7 +8,7 @@ class Database():
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client['webapp']
+        Database.DATABASE = client.get_database()
     
     @staticmethod
     def insert(collection, data):
