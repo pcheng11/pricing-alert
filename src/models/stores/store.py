@@ -34,7 +34,6 @@ class Store():
     def get_by_name(cls, store_name):
         return cls(**Database.find_one(StoreConstants.COLLECTION, {"name": store_name}))
 
-
     @classmethod
     def all(cls):
         return [cls(**elem) for elem in Database.find(StoreConstants.COLLECTION, {})]
