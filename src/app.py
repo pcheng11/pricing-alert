@@ -29,4 +29,4 @@ app.register_blueprint(store_blueprint, url_prefix='/stores')
 
 
 if __name__ == '__main__':
-    app.run(debug=app.config, port=5005)
+    app.run(debug=app.config, port=5009)

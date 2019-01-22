@@ -2,13 +2,15 @@ import os
 import pymongo
 
 class Database():
-    URI = os.environ.get("MONGOLAB_URI")
+    # URI = os.environ.get("MONGOLAB_URI")
+    URI = "mongodb://127.0.0.1:27017"
     DATABASE = None
 
     @staticmethod
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client.get_database()
+        # Database.DATABASE = client.get_database()
+        Database.DATABASE = client['webapp']
     
     @staticmethod
     def insert(collection, data):

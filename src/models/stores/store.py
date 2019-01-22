@@ -45,12 +45,13 @@ class Store():
 
     @classmethod
     def find_by_url(cls, url):
+        longest = 0
         for i in range(0, len(url)+1):
+            print(i)
             try:
                 store = cls.get_by_url_prefix(url[:i])
-                return store
             except:
-                raise StoreErrors.StoreNotFoundError("The URL prefix used to find the store didn't match any results")
+                return store
 
     @classmethod
     def all(cls):
