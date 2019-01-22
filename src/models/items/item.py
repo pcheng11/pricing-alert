@@ -7,10 +7,11 @@ import uuid
 from src.models.stores.store import Store
 
 class Item():
-    def __init__(self, name, url, price=None, _id=None):
+    def __init__(self, name, url, store_id, price=None, _id=None):
         self.name = name
         self.url = url
-        store = Store.find_by_url(url)
+        self.store_id = store_id
+        store = Store.get_by_id(store_id)
         self.tag_name = store.tag_name
         self.query = store.query
         self.price = None if price is None else price
@@ -34,14 +35,15 @@ class Item():
         return self.price
 
     def save_to_mongo(self):
-        Database.update(ItemConstants.COLLECTION, {'_id':self._id}, self.json())
+        Database.update(ItemConstants.COLLECTION, {'_id': self._id}, self.json())
 
     def json(self):
         return {
             "_id": self._id,
             "name": self.name,
             "url": self.url,
-            "price": self.price
+            "price": self.price,
+            "store_id": self.store_id
         }
     @classmethod
     def get_by_id(cls, item_id):

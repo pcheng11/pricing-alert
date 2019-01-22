@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, session, url_for, redirec
 from src.models.alerts.alert import Alert
 from src.models.items.item import Item
 import src.models.users.decorators as user_decorators
+from src.models.stores.store import Store
 from src.models.users.user import User
 
 alert_blueprint = Blueprint('alerts', __name__)
@@ -13,15 +14,17 @@ def create_alert():
     if request.method == 'POST':
         name = request.form['name']
         url = request.form['url']
+        store_id = request.form.get('store')
         price_limit = float(request.form['price_limit'])
 
-        item = Item(name, url)
+        item = Item(name, url, store_id)
         item.save_to_mongo()
         alert = Alert(session['email'], price_limit, item._id)
         alert.load_item_price()
         return redirect(url_for('users.user_alerts'))
 
-    return render_template("alerts/create_alert.html")
+    stores = Store.all()
+    return render_template("alerts/create_alert.html", stores=stores)
 
 @alert_blueprint.route('/edit/<string:alert_id>', methods=['POST', 'GET'])
 @user_decorators.requires_login

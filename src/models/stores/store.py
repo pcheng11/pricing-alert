@@ -34,23 +34,6 @@ class Store():
     def get_by_name(cls, store_name):
         return cls(**Database.find_one(StoreConstants.COLLECTION, {"name": store_name}))
 
-    @classmethod
-    def get_by_url_prefix(cls, url_prefix):
-        """
-        called by find_by_url
-        :param url_prefix: url prefix
-        :return: store object
-        """
-        return cls(**Database.find_one(StoreConstants.COLLECTION, {"url_prefix": {"$regex": "^{}".format(url_prefix)}}))
-
-    @classmethod
-    def find_by_url(cls, url):
-        longest = 0
-        for i in range(0, len(url)+1):
-            try:
-                store = cls.get_by_url_prefix(url[:i])
-            except:
-                return store
 
     @classmethod
     def all(cls):
