@@ -1,6 +1,9 @@
 import datetime
 from src.common.database import Database
 from src.models.items.item import Item
+import smtplib
+from email.message import EmailMessage
+import os
 
 __author__ = 'victor cheng'
 
@@ -22,22 +25,21 @@ class Alert():
         return "<Alert for {} on item {} with price limit{}>".format(self.user_email, self.item.name, self.price_limit)
 
     def send(self):
-        print("sent")
-        b = requests.post(
-            AlertConstants.URL,
-            auth=("api", AlertConstants.API_KEY),
-            data={
-                "from": AlertConstants.FROM,
-                "to": [self.user_email],
-                "subject": "Price limit reached for item {}!!!".format(self.item.name),
-                "text": "We've found a deal! Link: {}. To navigate to the alert, visit {}".format(
-                    self.item.url, "http://")
-            }
-        )
-        print(b.status_code)
-        print(b.content)
 
-        return b
+        email = EmailMessage()
+        email['Subject'] = '[Pricing Service] Price Limit Reached!'
+        email['From'] = 'pricing.alert.service@gmail.com'
+        email['To'] = self.user_email
+        content = 'The price for your item: {} has reached your price limit: {}. To nagvigate to your item, please click this URL: {}'.format(
+            self.item.name, self.price_limit, self.item.url
+        )
+        email.set_content(content)
+        s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+        s.starttls()
+        s.login('pricing.alert.service@gmail.com', os.environ.get('EMAIL_PW'))
+        s.send_message(email)
+        s.quit()
+
 
     @classmethod
     def find_needing_update(cls, minutes_since_update=AlertConstants.ALERT_TIMEOUT):

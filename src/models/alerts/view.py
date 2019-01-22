@@ -33,6 +33,7 @@ def edit_alert(alert_id):
     if request.method == 'POST':
         price_limit = float(request.form['price_limit'])
         alert.price_limit = price_limit
+        alert.save_to_mongo()
         return redirect(url_for('users.user_alerts'))
 
     return render_template("alerts/edit_alert.html", alert=alert)
