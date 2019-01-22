@@ -47,7 +47,6 @@ class Store():
     def find_by_url(cls, url):
         longest = 0
         for i in range(0, len(url)+1):
-            print(i)
             try:
                 store = cls.get_by_url_prefix(url[:i])
             except:
