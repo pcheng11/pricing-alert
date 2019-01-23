@@ -9,7 +9,9 @@
     {% for store in stores %}
     <a href="{{ url_for('stores.store_page', store_id=store._id)}}" class="list-group-item">
         <h4 class="list-group-item-title">{{ store.name }}</h4>
-        <p class="list-group-item-text">Description</p>
+        <a class="btn btn-default" href="{{ store.url_prefix }}">
+            <span class="glyphicon glyphicon-share-alt"></span> Go to this store
+        </a>
     </a>
     {% endfor %}
 </div>
