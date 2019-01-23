@@ -5,6 +5,8 @@ from src.common.database import Database
 import src.models.items.constants as ItemConstants
 import uuid
 from src.models.stores.store import Store
+from selenium import webdriver
+
 
 class Item():
     def __init__(self, name, url, store_id, price=None, _id=None):
@@ -21,16 +23,23 @@ class Item():
         return "<Item {} with URL{}>".format(self.name, self.url)
 
     def load_price(self):
-        agent = {
-            "User-Agent": 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
-        }
-        request = requests.get(self.url, headers=agent)
-        # {
-        #     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-        # })
-        content = request.content
-        print(content)
-        soup = BeautifulSoup(content, "html.parser")
+        # agent = {
+        #     "User-Agent": 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+        # }
+        # request = requests.get(self.url, headers=agent)
+
+        options = webdriver.ChromeOptions()
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument("--test-type")
+        # options.binary_location = "/usr/bin/chromium"
+        driver = webdriver.Chrome(chrome_options=options)
+        driver.get(self.url)
+
+        html = driver.page_source
+        # content = request.content
+        # print(content)
+        print(html)
+        soup = BeautifulSoup(html, "html.parser")
         print(self.tag_name)
         print(self.query)
         element = soup.find(self.tag_name, self.query)
