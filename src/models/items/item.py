@@ -21,9 +21,13 @@ class Item():
         return "<Item {} with URL{}>".format(self.name, self.url)
 
     def load_price(self):
-        request = requests.get(self.url, headers={
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-        })
+        agent = {
+            "User-Agent": 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+        }
+        request = requests.get(self.url, headers=agent)
+        # {
+        #     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+        # })
         content = request.content
         print(content)
         soup = BeautifulSoup(content, "html.parser")
