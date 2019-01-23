@@ -25,7 +25,7 @@ class Item():
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
         })
         content = request.content
-        soup = BeautifulSoup(content, "lxml")
+        soup = BeautifulSoup(content, "html5lib")
         print(self.tag_name)
         print(self.query)
         element = soup.find(self.tag_name, self.query)
