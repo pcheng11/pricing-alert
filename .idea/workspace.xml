@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="754cae27-adc1-4aa3-8204-8a6151bbbc24" name="Default" comment="fix __init__">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/html_dependencies.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/html_dependencies.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="html_dependencies.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/templates/html_dependencies.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="218" selection-start-line="1" selection-start-column="218" selection-end-line="1" selection-end-column="218" />
+            <state relative-caret-position="46">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -781,8 +780,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/html_dependencies.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="218" selection-start-line="1" selection-start-column="218" selection-end-line="1" selection-end-column="218" />
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
