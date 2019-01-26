@@ -2,68 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pricing Alert</title>
+    <title>Price Alert</title>
     {% include "html_dependencies.html" %}
 </head>
 <body>
-{#<nav class="navbar navbar-default">#}
-{#  <div class="container">#}
-{#    <!-- Brand and toggle get grouped for better mobile display -->#}
-{#    <div class="navbar-header">#}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
 {#        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">#}
 {#            <span class="sr-only">Toggle navigation</span>#}
 {#            <span class="icon-bar"></span>#}
 {#            <span class="icon-bar"></span>#}
 {#            <span class="icon-bar"></span>#}
 {#        </button>#}
-{#        <a class="navbar-brand" href="/" title="home">Pricing System</a>#}
-{#    </div>#}
-{#    <div id="navbar" class="navbar-collapse collapse">#}
-{#      <ul class="nav navbar-nav">#}
-{#          <li><a href="{{ url_for('stores.index') }}">Stores</a></li>#}
-{#      </ul>#}
-{#        {% if session ['email'] %}#}
-{#        <ul class="nav navbar-nav navbar-right">#}
-{#            <li><a href="{{ url_for('users.user_alerts') }}"><span class="glyphicon glyphicon-alert"></span>Your Alert</a></li>#}
-{#            <li><a href="{{ url_for('users.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span>Log Out</a></li>#}
-{#        </ul>#}
-{#        {% else %}#}
-{#        <ul class="nav navbar-nav navbar-right">#}
-{#            <li><a href="{{ url_for('users.register_user') }}"><span class="glyphicon glyphicon-pencil"></span>Sign Up</a></li>#}
-{#            <li><a href="{{ url_for('users.login_user') }}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>#}
-{#        </ul>#}
-{#        {% endif %}#}
-{##}
-{##}
-{#    </div>#}
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-
-      <a class="navbar-brand" href="/" title="home">Pricing System</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('stores.index') }}">Stores</a>
-          </li>
-        </ul>
-         {% if session ['email'] %}
+        <a class="navbar-brand" href="/" title="home">Pricing System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    </div>
+    <div class ="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a href="{{ url_for('stores.index') }}">Stores</a></li>
+      </ul>
+        {% if session ['email'] %}
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ url_for('users.user_alerts') }}"><span class="glyphicon glyphicon-alert"></span>Your Alert</a></li>
-            <li><a href="{{ url_for('users.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span>Log Out</a></li>
+            <li class="nav-item"><a href="{{ url_for('users.user_alerts') }}">Your Alert </a></li>
+            <li class="nav-item"><a href="{{ url_for('users.logout_user') }}"> Log Out</a></li>
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-right">
@@ -71,10 +36,13 @@
             <li><a href="{{ url_for('users.login_user') }}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
         </ul>
         {% endif %}
-      </div>
 
-  </nav>
-<div class="content container">
+    </div>
+
+</div>
+</nav>
+
+<div class="container">
 {% block content %}
 
 {% endblock %}

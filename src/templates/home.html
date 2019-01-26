@@ -1,8 +1,15 @@
 {% extends "base.html"%}
 {% block content %}
-<div class="jumbotron">
-    <h1>Welcome</h1>
-    <p>This is a price alert service that will automatically notify you via email once the price of your wanted item goes down</p>
-    <p>To start using, please <a class="btn btn-primary btn-lg" href="{{ url_for('users.register_user') }}" role="button">Sign Up</a></p>
-</div>
+
+    <div class="jumbotron">
+        <h1 class="display-3">Welcome!</h1>
+        <p class="lead">
+        <p>This is a price alert service that will automatically notify you via email once the price of your wanted item
+            goes down.</p>
+        <hr class="my-4">
+        <p>To start using, please sign up.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{{ url_for('users.register_user') }}" role="button">Sign Up</a>
+        </p>
+    </div>
 {% endblock %}

@@ -1,17 +1,29 @@
 {% extends "base.html"%}
 {% block content %}
 <div class="page-header">
-    <h1>Stores
-        <small>list of supported stores</small>
-    </h1>
+    <h3>Stores
+      <small class="text-muted"> Supported stores</small>
+    </h3>
 </div>
+
+{#<div class="list-group">#}
+{#  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">#}
+{#    <div class="d-flex w-100 justify-content-between">#}
+{#      <h5 class="mb-1">List group item heading</h5>#}
+{#      <small>3 days ago</small>#}
+{#    </div>#}
+{#    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>#}
+{#    <small>Donec id elit non mi porta.</small>#}
+{#  </a>#}
+{#</div>#}
+
 <div class="list-group">
     {% for store in stores %}
-    <a href="{{ url_for('stores.store_page', store_id=store._id)}}" class="list-group-item">
+    <a href="{{ url_for('stores.store_page', store_id=store._id)}}" class="list-group-item list-group-item-action flex-column align-items-start active">
         <h4 class="list-group-item-title">{{ store.name }}</h4>
-        <a class="btn btn-default" href="{{ store.url_prefix }}">
-            <span class="glyphicon glyphicon-share-alt"></span> Go to this store
-        </a>
+            <a class="btn btn-default" href="{{ store.url_prefix }}">
+            Go to this store's official website
+            </a>
     </a>
     {% endfor %}
 </div>
