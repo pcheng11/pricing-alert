@@ -9,3 +9,8 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+
+.content container {
+    background-color: black;
+}
