@@ -2,6 +2,7 @@ import datetime
 from src.common.database import Database
 from src.models.items.item import Item
 import smtplib
+import pytz
 from email.message import EmailMessage
 import os
 
@@ -17,7 +18,9 @@ class Alert():
         self.user_email = user_email
         self.price_limit = price_limit
         self.item = Item.get_by_id(item_id)
-        self.last_checked = datetime.datetime.utcnow() if last_checked is None else last_checked
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+        time_now = utc_now.astimezone(pytz.timezone("America/Chicago"))
+        self.last_checked = time_now if last_checked is None else last_checked
         self._id = uuid.uuid4().hex if _id is None else _id
         
     # define the string representation
@@ -43,7 +46,9 @@ class Alert():
 
     @classmethod
     def find_needing_update(cls, minutes_since_update=AlertConstants.ALERT_TIMEOUT):
-        last_updated_limit = datetime.datetime.utcnow() - datetime.timedelta(minutes=minutes_since_update)
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+        time_now = utc_now.astimezone(pytz.timezone("America/Chicago"))
+        last_updated_limit = time_now - datetime.timedelta(minutes=minutes_since_update)
         return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION,
                                                       {"last_checked":
                                                            {"$lte": last_updated_limit},
@@ -66,7 +71,9 @@ class Alert():
     def load_item_price(self):
 
         self.item.load_price()
-        self.last_checked = datetime.datetime.utcnow()
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+        time_now = utc_now.astimezone(pytz.timezone("America/Chicago"))
+        self.last_checked = time_now
         self.item.save_to_mongo()
         self.save_to_mongo()
         return self.item.price
